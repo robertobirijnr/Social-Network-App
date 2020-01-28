@@ -1,0 +1,4 @@
+{
+  "mongodbconnection": "mongodb://localhost:27017/social-network",
+  "jwtScrete": "ndjsdjhuyuyeuhnan"
+}
