@@ -6,6 +6,7 @@ const User = require("../models/userModel");
 const { check, validationResult } = require("express-validator");
 const auth = require("../middlewares/auth");
 
+//Create Post
 router.post(
   "/",
   [
@@ -41,4 +42,31 @@ router.post(
   }
 );
 
+// Get all Posts
+router.get("/", auth, async (req, res) => {
+  try {
+    const posts = await Post.find().sort({ date: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.send(500).json("Server Error");
+  }
+});
+
+//Get single Post
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    res.json(post);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    res.send(500).json("Server Error");
+  }
+});
 module.exports = router;
