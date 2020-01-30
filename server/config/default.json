@@ -1,4 +1,6 @@
 {
   "mongodbconnection": "mongodb://localhost:27017/social-network",
-  "jwtScrete": "ndjsdjhuyuyeuhnan"
+  "jwtScrete": "ndjsdjhuyuyeuhnan",
+  "githubClientId": "f0c8b4b4917a3b939827",
+  "githubClientSecrete": "737434a4609c173d8c2c9d0182cfaa610b8e46c2"
 }
