@@ -5,6 +5,7 @@ import Navbar from "./components/Layout/navBar";
 import Landingpage from "./components/Layout/landingPage";
 import Register from "./components/auth/register";
 import Login from "./components/auth/login";
+import Alert from "./components/Layout/alert";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Navbar />
         <Route exact path="/" component={Landingpage} />
         <section className="container">
+          <Alert />
           <Switch>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
