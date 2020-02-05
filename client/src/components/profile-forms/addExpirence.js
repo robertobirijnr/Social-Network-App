@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addExperirience } from "../redux/actions/profile";
 import { Link, withRouter } from "react-router-dom";
 
-const AddExpirence =({addExperirience,history}) => {
+const AddExpirence = ({ addExperirience, history }) => {
   const [formData, setFormData] = useState({
     company: "",
     title: "",
@@ -22,12 +22,11 @@ const AddExpirence =({addExperirience,history}) => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
- 
-    const handleSubmit= e =>{
-        e.preventDefault()
-        addExperirience(formData,history)
-    }
-    
+  const handleSubmit = e => {
+    e.preventDefault();
+    addExperirience(formData, history);
+  };
+
   return (
     <Fragment>
       <h1 className="large text-primary">Add An Experience</h1>
@@ -36,7 +35,7 @@ const AddExpirence =({addExperirience,history}) => {
         positions that you have had in the past
       </p>
       <small>* = required field</small>
-      <form className="form" onSubmit={e=>handleSubmit(e)}>
+      <form className="form" onSubmit={e => handleSubmit(e)}>
         <div className="form-group">
           <input
             type="text"
@@ -87,7 +86,7 @@ const AddExpirence =({addExperirience,history}) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{" "}
-            Current Job
+            Now
           </p>
         </div>
         <div className="form-group">
@@ -111,7 +110,7 @@ const AddExpirence =({addExperirience,history}) => {
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <Link className="btn btn-light my-1" to="/dasboard">
           Go Back
         </Link>
       </form>

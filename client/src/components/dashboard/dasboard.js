@@ -7,9 +7,11 @@ import Spinner from "../Layout/spinner";
 import DashboardActions from "../profile-forms/dasboardAction";
 import Experience from "./experience";
 import Education from './education'
+import {deleteAccount} from '../redux/actions/profile'
 
 const Dashboard = ({
   getCurrentProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile, loading }
 }) => {
@@ -29,6 +31,13 @@ const Dashboard = ({
           <DashboardActions />
           <Experience experience={profile.experience} />
           <Education  education={profile.education}/>
+
+          <div className="my-2">
+            <button onClick={()=>deleteAccount()} className="btn btn-danger">
+            <i className="fa fa-user-minus"></i>
+            Delete My Account
+            </button>
+          </div>
         </Fragment>
       ) : (
         <Fragment>
@@ -45,7 +54,8 @@ const Dashboard = ({
 Dashboard.protoTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
+  deleteAccount:PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -53,4 +63,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile ,deleteAccount})(Dashboard);

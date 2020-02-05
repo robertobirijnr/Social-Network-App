@@ -86,7 +86,7 @@ const AddEducation =({addEducation,history}) => {
                 toggleDisabled(!toDateDisabled);
               }}
             />{" "}
-            Current Job
+            Current School
           </p>
         </div>
         <div className="form-group">
@@ -110,7 +110,7 @@ const AddEducation =({addEducation,history}) => {
           ></textarea>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <Link className="btn btn-light my-1" to="/dasboard">
           Go Back
         </Link>
       </form>
