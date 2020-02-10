@@ -3,39 +3,42 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Momment from "react-moment";
 import { connect } from "react-redux";
+import {addLike,removeLike} from '../redux/actions/post'
 
 const PostItem = ({
+    addLike,
+    removeLike,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date }
 }) => (
-  <div class="post bg-white p-1 my-1">
+  <div className="post bg-white p-1 my-1">
     <div>
       <a href="profile.html">
-        <img class="round-img" src={avatar} alt="" />
+        <img className="round-img" src={avatar} alt="" />
         <h4>{name}</h4>
       </a>
     </div>
     <div>
-      <p class="my-1">{text}</p>
-      <p class="post-date">
+      <p className="my-1">{text}</p>
+      <p className="post-date">
         Posted on <Momment format="YYYY/MM/DD">{date}</Momment>
       </p>
-      <button type="button" class="btn btn-light">
-        <i class="fa fa-thumbs-up"></i>
+      <button onClick ={e => addLike(_id)} type="button" className="btn btn-light">
+        <i className="fa fa-thumbs-up"></i>
         <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
       </button>
-      <button type="button" class="btn btn-light">
-        <i class="fa fa-thumbs-down"></i>
+      <button onClick={e=>removeLike(_id)} type="button" className="btn btn-light">
+        <i className="fa fa-thumbs-down"></i>
       </button>
-      <Link to={`/post/${_id}`} class="btn btn-primary">
+      <Link to={`/post/${_id}`} className="btn btn-primary">
         Discussion{" "}
         {comments.length > 0 && (
-          <span class="comment-count">{comments.length}</span>
+          <span className="comment-count">{comments.length}</span>
         )}
       </Link>
       {!auth.loading && user === auth.user._id && (
-        <button type="button" class="btn btn-danger">
-          <i class="fa fa-times"></i>
+        <button type="button" className="btn btn-danger">
+          <i className="fa fa-times"></i>
         </button>
       )}
     </div>
@@ -51,4 +54,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {})(PostItem);
+export default connect(mapStateToProps, {addLike,removeLike})(PostItem);
